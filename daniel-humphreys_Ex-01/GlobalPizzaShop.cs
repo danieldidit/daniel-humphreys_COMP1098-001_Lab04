@@ -41,7 +41,7 @@ namespace daniel_humphreys_Ex_01
             string customerName = "";
             string phoneNumber = "";
 
-            // Ensures sure order number is between 0 and 99999999
+            // Ensures the order number is between 0 and 99999999
             if (Int32.Parse(orderNumberTextBox.Text) >= 0 && Int32.Parse(orderNumberTextBox.Text) <= 99999999)
                 orderNumber = Int32.Parse(orderNumberTextBox.Text);
             else
