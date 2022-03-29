@@ -55,7 +55,7 @@
             this.comboBoxPizzaType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxShops = new System.Windows.Forms.ComboBox();
+            this.comboBoxSize = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.clearInfoButton = new System.Windows.Forms.Button();
             this.grandTotal = new System.Windows.Forms.TextBox();
@@ -178,7 +178,7 @@
             this.pizzaSelection.Controls.Add(this.comboBoxPizzaType);
             this.pizzaSelection.Controls.Add(this.label6);
             this.pizzaSelection.Controls.Add(this.label5);
-            this.pizzaSelection.Controls.Add(this.comboBoxShops);
+            this.pizzaSelection.Controls.Add(this.comboBoxSize);
             this.pizzaSelection.Location = new System.Drawing.Point(268, 24);
             this.pizzaSelection.Name = "pizzaSelection";
             this.pizzaSelection.Size = new System.Drawing.Size(414, 230);
@@ -335,16 +335,12 @@
             this.comboBoxPizzaType.FormattingEnabled = true;
             this.comboBoxPizzaType.Items.AddRange(new object[] {
             "Select One",
-            "Small",
-            "Medium",
-            "Large",
-            "X-Large",
-            "Family"});
+            "Normal",
+            "Whole Wheat"});
             this.comboBoxPizzaType.Location = new System.Drawing.Point(76, 59);
             this.comboBoxPizzaType.Name = "comboBoxPizzaType";
             this.comboBoxPizzaType.Size = new System.Drawing.Size(154, 21);
             this.comboBoxPizzaType.TabIndex = 3;
-            this.comboBoxPizzaType.SelectedIndexChanged += new System.EventHandler(this.comboBoxPizzaType_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -360,25 +356,25 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 23);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Pizza Shop:";
+            this.label5.Text = "Pizza Size:";
             // 
-            // comboBoxShops
+            // comboBoxSize
             // 
-            this.comboBoxShops.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxShops.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxShops.FormattingEnabled = true;
-            this.comboBoxShops.Items.AddRange(new object[] {
+            this.comboBoxSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxSize.FormattingEnabled = true;
+            this.comboBoxSize.Items.AddRange(new object[] {
             "Select One",
-            "Pizza Nova",
-            "Domino\'s",
-            "Pizza Pizza",
-            "Pizza Hut"});
-            this.comboBoxShops.Location = new System.Drawing.Point(76, 20);
-            this.comboBoxShops.Name = "comboBoxShops";
-            this.comboBoxShops.Size = new System.Drawing.Size(154, 21);
-            this.comboBoxShops.TabIndex = 0;
+            "Small",
+            "Medium",
+            "Large"});
+            this.comboBoxSize.Location = new System.Drawing.Point(76, 20);
+            this.comboBoxSize.Name = "comboBoxSize";
+            this.comboBoxSize.Size = new System.Drawing.Size(154, 21);
+            this.comboBoxSize.TabIndex = 0;
+            this.comboBoxSize.SelectedIndexChanged += new System.EventHandler(this.comboBoxSize_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -503,7 +499,7 @@
         private System.Windows.Forms.ComboBox comboBoxPizzaType;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxShops;
+        private System.Windows.Forms.ComboBox comboBoxSize;
         private System.Windows.Forms.Button addOrderButton;
         private System.Windows.Forms.CheckBox checkBoxCheese;
         private System.Windows.Forms.CheckBox checkBoxOnions;

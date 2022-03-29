@@ -40,7 +40,7 @@
             // listBox
             // 
             this.listBox.FormattingEnabled = true;
-            this.listBox.Location = new System.Drawing.Point(25, 41);
+            this.listBox.Location = new System.Drawing.Point(42, 41);
             this.listBox.Name = "listBox";
             this.listBox.Size = new System.Drawing.Size(120, 238);
             this.listBox.TabIndex = 0;

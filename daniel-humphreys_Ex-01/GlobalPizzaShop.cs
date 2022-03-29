@@ -20,7 +20,7 @@ namespace daniel_humphreys_Ex_01
 
             // Sets default index for comboboxes
             comboBoxPizzaType.SelectedIndex = 0;
-            comboBoxShops.SelectedIndex = 0;
+            comboBoxSize.SelectedIndex = 0;
         }
 
         // Declare properties
@@ -37,15 +37,15 @@ namespace daniel_humphreys_Ex_01
          */
         private void updateInfoButton_Click(object sender, EventArgs e)
         {
-            int orderNumber = 0;
+            int orderNumber = 101;
             string customerName = "";
             string phoneNumber = "";
 
             // Ensures the order number is between 0 and 99999999
-            if (Int32.Parse(orderNumberTextBox.Text) >= 0 && Int32.Parse(orderNumberTextBox.Text) <= 99999999)
+            if (Int32.Parse(orderNumberTextBox.Text) >= 101 && Int32.Parse(orderNumberTextBox.Text) <= 999)
                 orderNumber = Int32.Parse(orderNumberTextBox.Text);
             else
-                throw new Exception("Order Number must be between 0 and 99999999");
+                throw new Exception("Order Number must be between 101 and 999");
 
             // Ensures there are no numbers in customers name
             if (customerNameTextBox.Text.Any(char.IsDigit))
@@ -77,42 +77,30 @@ namespace daniel_humphreys_Ex_01
         /*
          * Determines the base price of the pizza based on the the size that is chosen
          */
-        private void comboBoxPizzaType_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxPizzaType.SelectedIndex == 0)
+            if (comboBoxSize.SelectedIndex == 0)
             {
                 PizzaEstimate = (PizzaEstimate - SizeCost);
                 SizeCost = 0M;
             }
 
-            if (comboBoxPizzaType.SelectedIndex == 1)
-            {
-                PizzaEstimate = (PizzaEstimate - SizeCost) + 8;
-                SizeCost = 8M;
-            }
-
-            if (comboBoxPizzaType.SelectedIndex == 2)
+            if (comboBoxSize.SelectedIndex == 1)
             {
                 PizzaEstimate = (PizzaEstimate - SizeCost) + 10;
                 SizeCost = 10M;
             }
-            
-            if (comboBoxPizzaType.SelectedIndex == 3)
+
+            if (comboBoxSize.SelectedIndex == 2)
             {
                 PizzaEstimate = (PizzaEstimate - SizeCost) + 12;
                 SizeCost = 12M;
             }
 
-            if (comboBoxPizzaType.SelectedIndex == 4)
+            if (comboBoxSize.SelectedIndex == 3)
             {
                 PizzaEstimate = (PizzaEstimate - SizeCost) + 14;
                 SizeCost = 14M;
-            }
-
-            if (comboBoxPizzaType.SelectedIndex == 5)
-            {
-                PizzaEstimate = (PizzaEstimate - SizeCost) + 16;
-                SizeCost = 16M;
             }
 
             pizzaEstimateBox.Text = $"{PizzaEstimate:C}";
@@ -125,10 +113,10 @@ namespace daniel_humphreys_Ex_01
         private void checkBoxPepperoni_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxPepperoni.Checked)
-                PizzaEstimate += 1;
+                PizzaEstimate += 2;
 
             if (!checkBoxPepperoni.Checked)
-                PizzaEstimate -= 1;
+                PizzaEstimate -= 2;
 
             pizzaEstimateBox.Text = $"{PizzaEstimate:C}";
         }
@@ -136,10 +124,10 @@ namespace daniel_humphreys_Ex_01
         private void checkBoxHam_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxHam.Checked)
-                PizzaEstimate += 1;
+                PizzaEstimate += 2;
 
             if (!checkBoxHam.Checked)
-                PizzaEstimate -= 1;
+                PizzaEstimate -= 2;
 
             pizzaEstimateBox.Text = $"{PizzaEstimate:C}";
         }
@@ -239,7 +227,7 @@ namespace daniel_humphreys_Ex_01
 
             // sets comboboxes to default
             comboBoxPizzaType.SelectedIndex = 0;
-            comboBoxShops.SelectedIndex = 0;
+            comboBoxSize.SelectedIndex = 0;
         }
 
         /*
@@ -290,8 +278,9 @@ namespace daniel_humphreys_Ex_01
             selectedToppings = selectedToppings.Remove(selectedToppings.Length - 2);
 
             // If both comboboxes are selected, add the order to the orders list
-            if (comboBoxShops.SelectedIndex != 0 && comboBoxPizzaType.SelectedIndex != 0)
-                orders.Add($"1x {comboBoxShops.Text} {comboBoxPizzaType.Text} Size Pizza with {selectedToppings}. {PizzaEstimate:C}\n");
+            if (comboBoxSize.SelectedIndex != 0 && comboBoxPizzaType.SelectedIndex != 0)
+                orders.Add($"1x {comboBoxSize.Text} {comboBoxPizzaType.Text} Crust Pizza with {selectedToppings}.\n" +
+                    $"#{orderNumberTextBox.Text,-5} | {customerNameTextBox.Text} | {PizzaEstimate:C}\n");
 
             // Loop through each order in the list and add onto the order string
             foreach (string selection in orders)
@@ -300,8 +289,11 @@ namespace daniel_humphreys_Ex_01
             }
 
             // Calculates the grand total cost every time a new pizza is added to the order
-            PizzaGrandTotal = PizzaGrandTotal + PizzaEstimate;
-            
+            if (comboBoxSize.SelectedIndex != 0 && comboBoxPizzaType.SelectedIndex != 0)
+            {
+                PizzaGrandTotal = PizzaGrandTotal + PizzaEstimate;
+            }
+             
             // Displays all the orders
             orderTextBox.Text = $"{order}";
 
@@ -331,6 +323,6 @@ namespace daniel_humphreys_Ex_01
         private void exitButton_Click(object sender, EventArgs e)
         {
             Close();
-        }
+        }      
     }
 }
